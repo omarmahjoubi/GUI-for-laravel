@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JDialog;
@@ -11,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import com.test.guielement.DynamicModel;
+import com.test.guielement.RoutesTable;
 
 public class DisplayRoutes extends AbstractAction {
 
@@ -25,6 +29,7 @@ public class DisplayRoutes extends AbstractAction {
 
 		Process p;
 		String res = "" ; 
+		ArrayList<Route> routes = new ArrayList<Route>();
 		if (Open.absolutePathProject != null) {
 			String command4 = "cmd.exe /c " + "cd " + Open.absolutePathProject + " & php artisan route:list";
 			try {
@@ -51,22 +56,21 @@ public class DisplayRoutes extends AbstractAction {
 				String middleware = list[7] ;
 				
 				res = res + "<html>uri => " + uri + " | method => " + method + " | action => " + action + " | middleware => " + middleware + "<br>" ;
+				Route route = new Route(uri,method,action,middleware) ;
+				routes.add(route) ;
 				}
 				
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 				res = res + "</html>" ;
-				JDialog dialog = new JDialog() ; 
-				dialog.setTitle("routes");
-				JPanel panel = new JPanel() ;
-				panel.setLayout(new FlowLayout());
-				JLabel label = new JLabel() ;
-				label.setText(res);
-				panel.add(label) ;				
-				dialog.setContentPane(panel);
-				dialog.pack(); 
-				dialog.setVisible(true);
+				RoutesTable rt = new RoutesTable() ;
+				DynamicModel dm = (DynamicModel) rt.getTableau().getModel() ;
+				for (Route r : routes) {
+					dm.addRoute(r);
+				}
+				rt.setVisible(true);
+				
 		} else {
 			JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
 		}
