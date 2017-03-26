@@ -50,10 +50,14 @@ public class DisplayRoutes extends AbstractAction {
 				}
 				
 				String [] list = line.split("\\|") ;
-				String method = list[2] + "," + list[3] ;
-				String uri = list[4] ;
-				String action = list[6] ;
-				String middleware = list[7] ;
+				for (String s : list) {
+					System.out.println("memebre de list : " + s) ;
+				}
+				System.out.println("*************") ;
+				String method = list[list.length-6] + "," + list[list.length-5] ;
+				String uri = list[list.length-4] ;
+				String action = list[list.length-2] ;
+				String middleware = list[list.length-1] ;
 				
 				res = res + "<html>uri => " + uri + " | method => " + method + " | action => " + action + " | middleware => " + middleware + "<br>" ;
 				Route route = new Route(uri,method,action,middleware) ;
