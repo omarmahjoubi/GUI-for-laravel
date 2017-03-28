@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
         button = new JButton(new CreateProject("créer le projet", this));
         panel.add(button);
 
-        button1 = new JButton(new Open("Spécifier le chemin de votre projet", this));
+        button1 = new JButton(new Open("Spécifier le chemin de votre projet", this,""));
         panel.add(button1);
 
         return panel;
@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
             }
         });
         panel.add(button);
-        button1 = new JButton(new Open("Ancien projet", this));
+        button1 = new JButton(new Open("Ancien projet", this, "old"));
         panel.add(button1);
         button2 = new JButton(new Guide("Guide", this));
         panel.add(button2);

@@ -16,9 +16,11 @@ public class Open extends AbstractAction {
     private MainFrame frame;
     public static String absolutePathProject = null;
     public static String projectPath = "";
+    private String from = "";
 
-    public Open(String text, MainFrame frame) {
+    public Open(String text, MainFrame frame, String from) {
         super(text);
+        this.from = from;
         this.frame = frame;
     }
 
@@ -48,6 +50,10 @@ public class Open extends AbstractAction {
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
+            }
+
+            if (from != ""){
+                frame.changePanel();
             }
         } else {
             System.out.println("No Selection ");
