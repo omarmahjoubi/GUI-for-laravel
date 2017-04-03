@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
         button2 = new JButton(new DisplayRoutes("afficher les routes", this));
         panel.add(button2);
 
-        button3 = new JButton(new DisplayRoutes("ajouter une route", this));
+        button3 = new JButton(new AddRoute("ajouter une route", this));
         panel.add(button3);
 
         return panel;
