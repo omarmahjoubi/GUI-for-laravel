@@ -49,8 +49,11 @@ public class AddRoute extends AbstractAction {
 
             FileWriter fw = new FileWriter(f1);
             BufferedWriter out = new BufferedWriter(fw);
-            for (String s : lines)
+            for (String s : lines){
                 out.write(s);
+                out.newLine();
+            }
+
             out.flush();
             out.close();
         } catch (Exception ex) {
