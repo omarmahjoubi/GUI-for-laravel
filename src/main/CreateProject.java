@@ -27,7 +27,7 @@ public class CreateProject extends AbstractAction {
             System.out.println("projectPath = " + projectPath);
             if(projectPath!=""){
                 ProcessBuilder builder = new ProcessBuilder(
-                        "cmd.exe", "/c", "cd "+projectPath +" && composer create-project --prefer-dist laravel/laravel ppptest1");
+                        "cmd.exe", "/c", "cd "+projectPath +" && composer create-project --prefer-dist laravel/laravel "+this.frame.getField().getText());
                 builder.redirectErrorStream(true);
                 try {
                     p = builder.start();

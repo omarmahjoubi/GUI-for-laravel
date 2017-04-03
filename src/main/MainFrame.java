@@ -15,6 +15,7 @@ public class MainFrame extends JFrame {
     private JButton button;
     private JButton button1;
     private JButton button2;
+    private JButton button3;
 
     public MainFrame() {
         super();
@@ -67,6 +68,9 @@ public class MainFrame extends JFrame {
 
         button2 = new JButton(new DisplayRoutes("afficher les routes", this));
         panel.add(button2);
+
+        button3 = new JButton(new DisplayRoutes("ajouter une route", this));
+        panel.add(button3);
 
         return panel;
     }
