@@ -1,4 +1,5 @@
-package main; /**
+package main;
+/**
  * Created by Moslah_Hamza on 27/03/2017.
  */
 
@@ -16,6 +17,7 @@ public class MainFrame extends JFrame {
     private JButton button1;
     private JButton button2;
     private JButton button3;
+    private JButton button4;
 
     public MainFrame() {
         super();
@@ -71,6 +73,9 @@ public class MainFrame extends JFrame {
 
         button3 = new JButton(new AddRoute("ajouter une route", this));
         panel.add(button3);
+
+        button4 = new JButton(new Arborescence("Afficher l'arborescence", this));
+        panel.add(button4);
 
         return panel;
     }
