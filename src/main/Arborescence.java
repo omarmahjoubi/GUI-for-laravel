@@ -3,6 +3,7 @@ package main;
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 public class Arborescence extends AbstractAction {
     private MainFrame frame;
     private JFrame treeFrame = new JFrame();
-    private JTree tree ;
+    private MyJTree tree ;
     private TreeModel model;
     private JScrollPane scrollPane;
     private String projectPath = "";
@@ -25,7 +26,7 @@ public class Arborescence extends AbstractAction {
         super(s);
         this.frame = frame;
         this.model = new FileTreeModel(new File(Open.absolutePathProject));
-        this.tree = new JTree(model);
+        this.tree = new MyJTree ( model);
     }
 
     @Override
