@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3b75524-def7-4194-88da-c4c180e721ab" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/MyJTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Arborescence.java" afterPath="$PROJECT_DIR$/src/main/Arborescence.java" />
     </list>
     <ignored path="GUI-for-laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +67,8 @@
       <file leaf-file-name="MyJTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/MyJTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+            <state relative-caret-position="264">
+              <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#714#952#0" expanded="true" />
@@ -768,7 +768,7 @@
       <workItem from="1491213729166" duration="1100000" />
       <workItem from="1491225756109" duration="3683000" />
       <workItem from="1491244518418" duration="2450000" />
-      <workItem from="1491809579296" duration="7008000" />
+      <workItem from="1491809579296" duration="7098000" />
     </task>
     <task id="LOCAL-00001" summary="display project tree">
       <created>1491248035795</created>
@@ -791,11 +791,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491815458274</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Tree pop up menu">
+      <created>1491818134873</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1491818134873</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27652000" />
+    <option name="totallyTimeSpent" value="27742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -844,7 +851,8 @@
     <MESSAGE value="display project tree" />
     <MESSAGE value="Open selected files" />
     <MESSAGE value="Scroll pane" />
-    <option name="LAST_COMMIT_MESSAGE" value="Scroll pane" />
+    <MESSAGE value="Tree pop up menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tree pop up menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1326,8 +1334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/MyJTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        <state relative-caret-position="264">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#714#952#0" expanded="true" />
