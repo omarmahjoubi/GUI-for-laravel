@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3b75524-def7-4194-88da-c4c180e721ab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GUI-for-laravel/main/MainFrame$1.class" afterPath="$PROJECT_DIR$/out/production/GUI-for-laravel/main/MainFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GUI-for-laravel/main/MainFrame.class" afterPath="$PROJECT_DIR$/out/production/GUI-for-laravel/main/MainFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Arborescence.java" afterPath="$PROJECT_DIR$/src/main/Arborescence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/FileTreeModel.java" afterPath="$PROJECT_DIR$/src/main/FileTreeModel.java" />
     </list>
     <ignored path="GUI-for-laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,11 +59,9 @@
       <file leaf-file-name="Arborescence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/Arborescence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="228">
+              <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -769,7 +768,7 @@
       <workItem from="1491213729166" duration="1100000" />
       <workItem from="1491225756109" duration="3683000" />
       <workItem from="1491244518418" duration="2450000" />
-      <workItem from="1491809579296" duration="4206000" />
+      <workItem from="1491809579296" duration="5515000" />
     </task>
     <task id="LOCAL-00001" summary="display project tree">
       <created>1491248035795</created>
@@ -778,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491248035795</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Open selected files">
+      <created>1491814153608</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1491814153608</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24850000" />
+    <option name="totallyTimeSpent" value="26159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -829,7 +835,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="display project tree" />
-    <option name="LAST_COMMIT_MESSAGE" value="display project tree" />
+    <MESSAGE value="Open selected files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Open selected files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1314,11 +1321,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Arborescence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="41" column="35" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="228">
+          <caret line="48" column="11" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

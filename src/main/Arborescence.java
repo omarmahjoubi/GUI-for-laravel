@@ -18,6 +18,7 @@ public class Arborescence extends AbstractAction {
     private JFrame treeFrame = new JFrame();
     private JTree tree ;
     private TreeModel model;
+    private JScrollPane scrollPane;
     private String projectPath = "";
 
     public Arborescence(String s, MainFrame mainFrame) {
@@ -46,10 +47,17 @@ public class Arborescence extends AbstractAction {
                 }
             }
         });
-        this.treeFrame.add(tree);
+
+        this.scrollPane = new JScrollPane(tree);
+
+        this.tree.setBounds(0, 0, this.scrollPane.getWidth(), this.scrollPane.getHeight());
+        this.scrollPane.setBounds(460, 270, 240, 410);
+        this.treeFrame.add(scrollPane);
         this.treeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.treeFrame.setTitle("Arborescence du projet");
         this.treeFrame.pack();
         this.treeFrame.setVisible(true);
+        this.tree.setVisible(true);
+        this.scrollPane.setVisible(true);
     }
 }
