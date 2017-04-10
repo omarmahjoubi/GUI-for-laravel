@@ -1,7 +1,10 @@
 package main;
 
+import javax.swing.event.TreeModelEvent;
+import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -9,6 +12,7 @@ import java.util.Arrays;
  */
 public class FileTreeModel implements TreeModel {
 
+    private final ArrayList<TreeModelListener> mListeners = new ArrayList<>();
     private File root;
 
     public FileTreeModel(File root) {
@@ -17,7 +21,7 @@ public class FileTreeModel implements TreeModel {
 
     @Override
     public void addTreeModelListener(javax.swing.event.TreeModelListener l) {
-        //do nothing
+        //this.addTreeModelListener(l);
     }
 
     @Override
@@ -56,12 +60,39 @@ public class FileTreeModel implements TreeModel {
 
     @Override
     public void removeTreeModelListener(javax.swing.event.TreeModelListener l) {
-        //do nothing
+        this.removeTreeModelListener(l);
     }
 
     @Override
     public void valueForPathChanged(javax.swing.tree.TreePath path, Object newValue) {
-        //do nothing
+        final File oldTmp = (File) path.getLastPathComponent();
+        final File oldFile = oldTmp;
+        final String newName = (String) newValue;
+        final File newFile = new File(oldFile.getParentFile(), newName);
+        oldFile.renameTo(newFile);
+        System.out.println("Renamed '" + oldFile + "' to '" + newFile + "'.");
+        reload();
     }
 
+    public void reload() {
+        // Need to duplicate the code because the root can formally be
+        // no an instance of the TreeNode.
+        final int n = getChildCount(getRoot());
+        final int[] childIdx = new int[n];
+        final Object[] children = new Object[n];
+
+        for (int i = 0; i < n; i++) {
+            childIdx[i] = i;
+            children[i] = getChild(getRoot(), i);
+        }
+
+        fireTreeStructureChanged(this, new Object[]{getRoot()}, childIdx, children);
+    }
+
+    protected void fireTreeStructureChanged(final Object source, final Object[] path, final int[] childIndices, final Object[] children) {
+        final TreeModelEvent event = new TreeModelEvent(source, path, childIndices, children);
+        for (final TreeModelListener l : mListeners) {
+            l.treeStructureChanged(event);
+        }
+    }
 }

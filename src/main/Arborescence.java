@@ -1,9 +1,14 @@
 package main;
 
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by Moslah_Hamza on 03/04/2017.
@@ -11,17 +16,36 @@ import java.io.File;
 public class Arborescence extends AbstractAction {
     private MainFrame frame;
     private JFrame treeFrame = new JFrame();
+    private JTree tree ;
+    private TreeModel model;
     private String projectPath = "";
 
     public Arborescence(String s, MainFrame mainFrame) {
         super(s);
         this.frame = frame;
+        this.model = new FileTreeModel(new File(Open.absolutePathProject));
+        this.tree = new JTree(model);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        TreeModel model = new FileTreeModel(new File(Open.absolutePathProject));
-        JTree tree = new JTree(model);
+//        TreeModel model = new FileTreeModel(new File(Open.absolutePathProject));
+//        JTree tree = new JTree(model);
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                TreePath tp = e.getNewLeadSelectionPath();
+                if (tp != null){
+                    System.out.println("Selected:  "+tp.getLastPathComponent());
+                    ProcessBuilder pb = new ProcessBuilder("Notepad.exe", ""+tp.getLastPathComponent());
+                    try {
+                        pb.start();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        });
         this.treeFrame.add(tree);
         this.treeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.treeFrame.setTitle("Arborescence du projet");
