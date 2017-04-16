@@ -2,13 +2,9 @@ package main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
 
 /**
  * Created by Moslah_Hamza on 03/04/2017.
@@ -22,43 +18,38 @@ public class AddRoute extends AbstractAction {
 
     public AddRoute(String s, MainFrame mainFrame) {
         super(s);
-        this.frame = frame;
+        this.frame = mainFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        route = JOptionPane.showInputDialog(frame, "veuillez entrer la route à ajouter", "Ajout d'une route", JOptionPane.PLAIN_MESSAGE);
-        doIt();
-    }
 
-    public void doIt() {
-        try {
-            System.out.println(Open.absolutePathProject + "\\routes\\web.php");
-            File f1 = new File(Open.absolutePathProject + "\\routes\\web.php");
-            FileReader fr = new FileReader(f1);
-            BufferedReader br = new BufferedReader(fr);
-            while ((line = br.readLine()) != null) {
-                if (line.contains("java"))
-                    line = line.replace("java", " ");
-                lines.add(line);
+        if (Open.absolutePathProject == null) {
+            JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
+        } else {
+            String route = this.frame.getRoute().getText();
+            String view = this.frame.getView().getText();
+            if (route.equals("")) {
+                JOptionPane.showMessageDialog(frame, "Veuillez spécifier l'adresse du route à ajouter");
+            } else if (view.equals("")) {
+                JOptionPane.showMessageDialog(frame, "Veuillez spécifier la vue Html associé au route");
+            } else {
+                try {
+                    FileWriter fw = new FileWriter(Open.absolutePathProject + "/routes/web.php", true);
+                    Writer writer = new BufferedWriter(fw);
+                    writer.write("\nRoute::get('/" + route + "', function() {\n" +
+                            "  return view('" + view + "');\n" +
+                            "});");
+                    writer.close();
+                    JOptionPane.showMessageDialog(frame, "votre route a été ajouté avec succés");
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
             }
-            lines.add(route);
-
-            fr.close();
-            br.close();
-
-            FileWriter fw = new FileWriter(f1);
-            BufferedWriter out = new BufferedWriter(fw);
-            for (String s : lines){
-                out.write(s);
-                out.newLine();
-            }
-
-            out.flush();
-            out.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }
+
+
 

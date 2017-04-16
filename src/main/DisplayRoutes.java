@@ -25,8 +25,7 @@ public class DisplayRoutes extends AbstractAction {
 
     public void actionPerformed(ActionEvent e) {
 
-        Process p;
-        String res = "";
+        Process p ;
         ArrayList<Route> routes = new ArrayList<Route>();
         if (Open.absolutePathProject != null) {
             String command4 = "cmd.exe /c " + "cd " + Open.absolutePathProject + " & php artisan route:list";
@@ -55,7 +54,6 @@ public class DisplayRoutes extends AbstractAction {
                     String action = list[list.length - 2];
                     String middleware = list[list.length - 1];
 
-                    res = res + "<html>uri => " + uri + " | method => " + method + " | action => " + action + " | middleware => " + middleware + "<br>";
                     Route route = new Route(uri, method, action, middleware);
                     routes.add(route);
                 }
@@ -63,7 +61,6 @@ public class DisplayRoutes extends AbstractAction {
             } catch (Exception e1) {
                 e1.printStackTrace();
             }
-            res = res + "</html>";
             RoutesTable rt = new RoutesTable();
             DynamicModel dm = (DynamicModel) rt.getTableau().getModel();
             for (Route r : routes) {

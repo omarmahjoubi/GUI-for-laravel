@@ -38,6 +38,7 @@ public class Open extends AbstractAction {
             projectPath = String.valueOf(fileChooser.getCurrentDirectory());
             System.out.println("getSelectedDirectory(): " + fileChooser.getCurrentDirectory());
             System.out.println("getSelectedFile(): " + fileChooser.getSelectedFile());
+            System.out.println("project path : "+Open.absolutePathProject) ;
             String command4 = "cmd.exe /c " + "cd " + Open.absolutePathProject;
             try {
                 p = Runtime.getRuntime().exec(command4);

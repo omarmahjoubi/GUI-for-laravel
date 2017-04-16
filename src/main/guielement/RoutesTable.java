@@ -16,7 +16,6 @@ public class RoutesTable extends JFrame {
     public RoutesTable() {
         super();
         setTitle("Routes");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tableau = new JTable(new DynamicModel());
         getContentPane().add(new JScrollPane(tableau), BorderLayout.CENTER);
         pack();

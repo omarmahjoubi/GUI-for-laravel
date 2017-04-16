@@ -10,9 +10,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+
+
 public class MainFrame extends JFrame {
 
     private JTextField field;
+    private JTextField route ;
+    private JTextField view ;
+    private JButton Confirm ;
     private JButton button;
     private JButton button1;
     private JButton button2;
@@ -68,11 +73,7 @@ public class MainFrame extends JFrame {
         panel.setLayout(new FlowLayout());
         panel.setBackground(Color.white);
 
-        button2 = new JButton(new DisplayRoutes("afficher les routes", this));
-        panel.add(button2);
 
-        button3 = new JButton(new AddRoute("ajouter une route", this));
-        panel.add(button3);
 
         button4 = new JButton(new Arborescence("Afficher l'arborescence", this));
         panel.add(button4);
@@ -86,20 +87,67 @@ public class MainFrame extends JFrame {
         panel.setBackground(Color.white);
         JFrame frame = this;
 
-        button = new JButton("Créer un projet");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setContentPane(buildContentPane());
-                frame.validate();
-            }
-        });
-        panel.add(button);
-        button1 = new JButton(new Open("Ancien projet", this, "old"));
-        panel.add(button1);
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menu1 = new JMenu("Projet") ;
+
+        JMenuItem create = new JMenuItem(new OpenCreatePanel("Créer un projet",this)) ;
+        menu1.add(create) ;
+
+        JMenuItem open = new JMenuItem(new Open("Ouvrir un projet",this,"old")) ;
+        menu1.add(open) ;
+
+        menuBar.add(menu1) ;
+
+        JMenu menu2 = new JMenu("Routage");
+        
+        JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter route",this));
+		menu2.add(addRoute);
+
+		JMenuItem displayRoute = new JMenuItem(new DisplayRoutes("afficher les routes", this)) ;
+		menu2.add(displayRoute) ;
+        
+		menuBar.add(menu2);
+		
+		setJMenuBar(menuBar);
+
         button2 = new JButton(new Guide("Guide", this));
         panel.add(button2);
 
         return panel;
     }
+    
+    public JPanel buildAddRoutePanel()  {
+    	JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        panel.setBackground(Color.white);
+        
+        JLabel label = new JLabel("adresse du route");
+		panel.add(label);
+		route = new JTextField();
+        route.setColumns(10);
+        panel.add(route);
+
+        JLabel label1 = new JLabel("nom du fichier associé au route");
+        panel.add(label1);
+        view = new JTextField();
+        view.setColumns(10);
+        panel.add(view);
+
+
+
+        JButton confirm = new JButton(new AddRoute("Confirmer",this)) ;
+        panel.add(confirm) ;
+
+        return panel ;
+
+    }
+
+	public JTextField getRoute() {
+		return route;
+	}
+
+	public JTextField getView() {
+		return view;
+	}
+
 }
