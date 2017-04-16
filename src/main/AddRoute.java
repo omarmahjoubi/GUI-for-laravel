@@ -28,7 +28,8 @@ public class AddRoute extends AbstractAction {
             JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
         } else {
             String route = this.frame.getRoute().getText();
-            String view = this.frame.getView().getText();
+            String view = OpenView.viewName;
+            String method = this.frame.getMethodList().getSelectedItem().toString() ;
             if (route.equals("")) {
                 JOptionPane.showMessageDialog(frame, "Veuillez spécifier l'adresse du route à ajouter");
             } else if (view.equals("")) {
@@ -37,7 +38,7 @@ public class AddRoute extends AbstractAction {
                 try {
                     FileWriter fw = new FileWriter(Open.absolutePathProject + "/routes/web.php", true);
                     Writer writer = new BufferedWriter(fw);
-                    writer.write("\nRoute::get('/" + route + "', function() {\n" +
+                    writer.write("\nRoute::"+ method.toLowerCase() + "('/" + route + "', function() {\n" +
                             "  return view('" + view + "');\n" +
                             "});");
                     writer.close();

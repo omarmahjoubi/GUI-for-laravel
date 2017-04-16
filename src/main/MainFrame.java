@@ -3,8 +3,7 @@ package main;
  * Created by Moslah_Hamza on 27/03/2017.
  */
 
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,12 +16,23 @@ public class MainFrame extends JFrame {
     private JTextField field;
     private JTextField route ;
     private JTextField view ;
+
+    public JLabel getVueName() {
+        return vueName;
+    }
+
     private JButton Confirm ;
     private JButton button;
     private JButton button1;
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JLabel vueName ;
+    private JComboBox methodList ;
+
+    public JComboBox getMethodList() {
+        return methodList;
+    }
 
     public MainFrame() {
         super();
@@ -124,14 +134,23 @@ public class MainFrame extends JFrame {
         JLabel label = new JLabel("adresse du route");
 		panel.add(label);
 		route = new JTextField();
-        route.setColumns(10);
+        route.setColumns(20);
         panel.add(route);
 
-        JLabel label1 = new JLabel("nom du fichier associé au route");
+        JLabel label1 = new JLabel("methode du route") ;
         panel.add(label1);
-        view = new JTextField();
-        view.setColumns(10);
-        panel.add(view);
+
+        String[] methods = { "GET" , "POST" , "PUT" , "DELETE" } ;
+        methodList = new JComboBox(methods) ;
+        methodList.setPreferredSize(new Dimension(200,20));
+        methodList.setSelectedItem(0);
+        panel.add(methodList) ;
+
+        JButton button = new JButton(new OpenView("sélectionner la vue HTML",this)) ;
+        panel.add(button);
+
+        vueName = new JLabel("aucune vue séléctionné") ;
+        panel.add(vueName) ;
 
 
 
