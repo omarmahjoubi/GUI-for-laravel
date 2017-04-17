@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3b75524-def7-4194-88da-c4c180e721ab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUI-for-laravel.iml" afterPath="$PROJECT_DIR$/GUI-for-laravel.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/Arborescence.java" afterPath="$PROJECT_DIR$/src/main/Arborescence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/FileTreeModel.java" afterPath="$PROJECT_DIR$/src/main/FileTreeModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/MyJTree.java" afterPath="$PROJECT_DIR$/src/main/MyJTree.java" />
     </list>
     <ignored path="GUI-for-laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,8 +81,8 @@
       <file leaf-file-name="FileTreeModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/FileTreeModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+            <state relative-caret-position="-342">
+              <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#454#455#0" expanded="true" />
@@ -802,7 +797,7 @@
       <workItem from="1491244518418" duration="2450000" />
       <workItem from="1491809579296" duration="7969000" />
       <workItem from="1492370422638" duration="6663000" />
-      <workItem from="1492415035977" duration="3793000" />
+      <workItem from="1492415035977" duration="4257000" />
     </task>
     <task id="LOCAL-00001" summary="display project tree">
       <created>1491248035795</created>
@@ -846,11 +841,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492417354238</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="display only names">
+      <created>1492418890615</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1492418890615</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39069000" />
+    <option name="totallyTimeSpent" value="39533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -901,7 +903,8 @@
     <MESSAGE value="Scroll pane" />
     <MESSAGE value="Tree pop up menu" />
     <MESSAGE value="Add and remove files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add and remove files" />
+    <MESSAGE value="display only names" />
+    <option name="LAST_COMMIT_MESSAGE" value="display only names" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1467,8 +1470,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/FileTreeModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+        <state relative-caret-position="-342">
+          <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#454#455#0" expanded="true" />
