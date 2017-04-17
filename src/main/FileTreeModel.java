@@ -21,7 +21,7 @@ public class FileTreeModel implements TreeModel {
 
     @Override
     public void addTreeModelListener(javax.swing.event.TreeModelListener l) {
-        //this.addTreeModelListener(l);
+        mListeners.add(l);
     }
 
     @Override
@@ -44,7 +44,11 @@ public class FileTreeModel implements TreeModel {
     public int getIndexOfChild(Object parent, Object child) {
         File par = (File) parent;
         File ch = (File) child;
-        return Arrays.asList(par.listFiles()).indexOf(ch);
+        final File[] files = par.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            if (files[i] == ch) return i;
+        }
+        return -1;
     }
 
     @Override
@@ -60,7 +64,7 @@ public class FileTreeModel implements TreeModel {
 
     @Override
     public void removeTreeModelListener(javax.swing.event.TreeModelListener l) {
-        this.removeTreeModelListener(l);
+        mListeners.remove(l);
     }
 
     @Override
