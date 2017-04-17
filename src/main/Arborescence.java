@@ -28,8 +28,11 @@ public class Arborescence extends AbstractAction {
     public Arborescence(String s, MainFrame mainFrame) {
         super(s);
         this.frame = frame;
-        this.model = new FileTreeModel(new File(Open.absolutePathProject));
+        File file = new File(Open.absolutePathProject);
+        FileTreeModel.MyFile myFile = new FileTreeModel.MyFile(file);
+        this.model = new FileTreeModel(myFile);
         this.tree = new MyJTree ( model, treeFrame);
+        this.tree.setEditable(true);
     }
 
     @Override
