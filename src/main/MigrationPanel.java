@@ -11,8 +11,12 @@ import java.awt.event.ActionListener;
 public class MigrationPanel extends JPanel {
 
     private JTextField migrationName ;
+    private JTextField tableName ;
 
     private JTextField name1 ;
+
+
+
     private JTextField name2 ;
     private JTextField name3 ;
     private JTextField name4 ;
@@ -60,18 +64,25 @@ public class MigrationPanel extends JPanel {
         JButton confirm = new JButton (new CreateMigration("Créer la migration",this,this.frame)) ;
         emptyPanels[0][2].add(confirm);
 
+        JLabel label1 = new JLabel("Nom de la table") ;
+        emptyPanels[1][0].add(label1);
+
+        tableName = new JTextField() ;
+        tableName.setColumns(15);
+        emptyPanels[1][1].add(tableName) ;
+
 
 
 
         JLabel name = new JLabel("nom");
-        emptyPanels[1][0].add(name);
+        emptyPanels[2][0].add(name);
 
         JLabel type = new JLabel("type");
-        emptyPanels[1][1].add(type);
+        emptyPanels[2][1].add(type);
 
 
         JLabel index = new JLabel("index");
-        emptyPanels[1][2].add(index);
+        emptyPanels[2][2].add(index);
 
         String [] indexes = { "--","primary","unique"} ;
         String [] types = { "integer","char","string","date"} ;
@@ -79,73 +90,73 @@ public class MigrationPanel extends JPanel {
 
         name1 = new JTextField();
         name1.setColumns(15);
-        emptyPanels[2][0].add(name1);
+        emptyPanels[3][0].add(name1);
 
 
         type1 = new JComboBox(types) ;
         type1.setSelectedItem(0);
-        emptyPanels[2][1].add(type1);
+        emptyPanels[3][1].add(type1);
 
 
         index1 = new JComboBox(indexes) ;
         index1.setSelectedItem(0);
-        emptyPanels[2][2].add(index1);
+        emptyPanels[3][2].add(index1);
 
         name2 = new JTextField();
         name2.setColumns(15);
-        emptyPanels[3][0].add(name2);
+        emptyPanels[4][0].add(name2);
 
 
         type2 = new JComboBox(types) ;
         type2.setSelectedItem(0);
-        emptyPanels[3][1].add(type2);
+        emptyPanels[4][1].add(type2);
 
 
         index2 = new JComboBox(indexes) ;
         index2.setSelectedItem(0);
-        emptyPanels[3][2].add(index2);
+        emptyPanels[4][2].add(index2);
 
         name3 = new JTextField();
         name3.setColumns(15);
-        emptyPanels[4][0].add(name3);
+        emptyPanels[5][0].add(name3);
 
 
         type3 = new JComboBox(types) ;
         type3.setSelectedItem(0);
-        emptyPanels[4][1].add(type3);
+        emptyPanels[5][1].add(type3);
 
 
         index3 = new JComboBox(indexes) ;
         index3.setSelectedItem(0);
-        emptyPanels[4][2].add(index3);
+        emptyPanels[5][2].add(index3);
 
         name4 = new JTextField();
         name4.setColumns(15);
-        emptyPanels[5][0].add(name4);
+        emptyPanels[6][0].add(name4);
 
 
         type4 = new JComboBox(types) ;
         type4.setSelectedItem(0);
-        emptyPanels[5][1].add(type4);
+        emptyPanels[6][1].add(type4);
 
 
         index4 = new JComboBox(indexes) ;
         index4.setSelectedItem(0);
-        emptyPanels[5][2].add(index4);
+        emptyPanels[6][2].add(index4);
 
         name5 = new JTextField();
         name5.setColumns(15);
-        emptyPanels[6][0].add(name5);
+        emptyPanels[7][0].add(name5);
 
 
         type5 = new JComboBox(types) ;
         type5.setSelectedItem(0);
-        emptyPanels[6][1].add(type5);
+        emptyPanels[7][1].add(type5);
 
 
         index5 = new JComboBox(indexes) ;
         index5.setSelectedItem(0);
-        emptyPanels[6][2].add(index5);
+        emptyPanels[7][2].add(index5);
 
 
     }
@@ -212,6 +223,10 @@ public class MigrationPanel extends JPanel {
 
     public JTextField getMigrationName() {
         return migrationName;
+    }
+
+    public JTextField getTableName() {
+        return tableName;
     }
 }
 

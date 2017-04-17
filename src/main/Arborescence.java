@@ -54,7 +54,6 @@ public class Arborescence extends AbstractAction {
         this.tree.setBounds(0, 0, this.scrollPane.getWidth(), this.scrollPane.getHeight());
         this.scrollPane.setBounds(460, 270, 240, 410);
         this.treeFrame.add(scrollPane);
-        this.treeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.treeFrame.setTitle("Arborescence du projet");
         this.treeFrame.pack();
         this.treeFrame.setVisible(true);
