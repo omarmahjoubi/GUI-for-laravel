@@ -116,6 +116,9 @@ public class MainFrame extends JFrame {
         JMenuItem addMigration = new JMenuItem(new OpenAddMigrationPanel("ajouter une migration", this));
         menu3.add(addMigration);
 
+        JMenuItem makeMigration = new JMenuItem(new MakeMigration("effectuer les migrations",this)) ;
+        menu3.add(makeMigration) ;
+
         menuBar.add(menu3);
 
         setJMenuBar(menuBar);

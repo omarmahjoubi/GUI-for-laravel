@@ -25,8 +25,9 @@ public class Open extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
+
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        fileChooser.setCurrentDirectory(new File("E:\\Google Drive\\Etudes\\GL4\\PPP\\sites"));
         fileChooser.setApproveButtonText("Selectionne le ficher");
         fileChooser.showOpenDialog(this.frame);
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

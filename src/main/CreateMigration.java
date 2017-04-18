@@ -123,10 +123,11 @@ public class CreateMigration extends AbstractAction {
 
                                 if ((line1.contains("up()"))&&(scanner.nextLine().contains("{"))) {
                                     fileLines.add("    {") ;
-                                    fileLines.add("        Schema::create('" + tableName + "', function (Blueprint $table) { });");
+                                    fileLines.add("        Schema::create('" + tableName + "', function (Blueprint $table) { ");
                                     for (String line2 : upCode) {
                                         fileLines.add(line2) ;
                                     }
+                                    fileLines.add("     });") ;
                                 }
 
                                 if ((line1.contains("down()"))&&(scanner.nextLine().contains("{"))) {
