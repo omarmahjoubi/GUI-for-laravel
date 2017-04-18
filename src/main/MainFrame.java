@@ -13,8 +13,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
 
 
-    public static int row = 2;
-    public static int column=0 ;
+    
 
     private JTextField field;
     private JTextField route;
@@ -118,6 +117,9 @@ public class MainFrame extends JFrame {
 
         JMenuItem makeMigration = new JMenuItem(new MakeMigration("effectuer les migrations",this)) ;
         menu3.add(makeMigration) ;
+
+        JMenuItem  rollBack = new JMenuItem(new RollBack("effectuer un Roll Back",this)) ;
+        menu3.add(rollBack) ;
 
         menuBar.add(menu3);
 
