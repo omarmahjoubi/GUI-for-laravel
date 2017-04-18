@@ -49,8 +49,66 @@ public class CreateMigration extends AbstractAction {
                     String line = "";
                     line = reader.readLine();
                     if (!(line.contains("Created"))) {
-                        JOptionPane.showMessageDialog(frame, "une erreur est survenu lors de la création de la migration");
+                        JOptionPane.showMessageDialog(frame, "une erreur est survenu lors de la création de la migration","ERROR",JOptionPane.ERROR_MESSAGE);
                     } else {
+
+                        ArrayList<String> upCode = new ArrayList<>() ;
+                        String begin = "            $table->" ;
+                        if (!(name1.equals(""))) {
+                            String s = begin + this.panel.getType1().getSelectedItem().toString() + "('" + name1 + "')" ;
+                            if (this.panel.getIndex1().getSelectedItem().toString().equals("primary")) {
+                                s = s + "->primary()" ;
+                            } else if (this.panel.getIndex1().getSelectedItem().toString().equals("unique")) {
+                                s = s + "->unique()" ;
+                            }
+                            s = s + ";" ;
+                            upCode.add(s) ;
+                        }
+
+                        if (!(name2.equals(""))) {
+                            String s = begin + this.panel.getType2().getSelectedItem().toString() + "('" + name2 + "')" ;
+                            if (this.panel.getIndex2().getSelectedItem().toString().equals("primary")) {
+                                s = s + "->primary()" ;
+                            } else if (this.panel.getIndex2().getSelectedItem().toString().equals("unique")) {
+                                s = s + "->unique()" ;
+                            }
+                            s = s + ";" ;
+                            upCode.add(s) ;
+                        }
+
+                        if (!(name3.equals(""))) {
+                            String s = begin + this.panel.getType3().getSelectedItem().toString() + "('" + name3 + "')" ;
+                            if (this.panel.getIndex3().getSelectedItem().toString().equals("primary")) {
+                                s = s + "->primary()" ;
+                            } else if (this.panel.getIndex3().getSelectedItem().toString().equals("unique")) {
+                                s = s + "->unique()" ;
+                            }
+                            s = s + ";" ;
+                            upCode.add(s) ;
+                        }
+
+                        if (!(name4.equals(""))) {
+                            String s = begin + this.panel.getType4().getSelectedItem().toString() + "('" + name4 + "')" ;
+                            if (this.panel.getIndex4().getSelectedItem().toString().equals("primary")) {
+                                s = s + "->primary()" ;
+                            } else if (this.panel.getIndex4().getSelectedItem().toString().equals("unique")) {
+                                s = s + "->unique()" ;
+                            }
+                            s = s + ";" ;
+                            upCode.add(s) ;
+                        }
+
+                        if (!(name5.equals(""))) {
+                            String s = begin + this.panel.getType5().getSelectedItem().toString() + "('" + name5 + "')" ;
+                            if (this.panel.getIndex5().getSelectedItem().toString().equals("primary")) {
+                                s = s + "->primary()" ;
+                            } else if (this.panel.getIndex5().getSelectedItem().toString().equals("unique")) {
+                                s = s + "->unique()" ;
+                            }
+                            s = s + ";" ;
+                            upCode.add(s) ;
+                        }
+
                         String[] list = line.split("39m");
                         String migrationFile = list[1] + ".php";
                         migrationFile = migrationFile.substring(1, migrationFile.length());
@@ -66,6 +124,9 @@ public class CreateMigration extends AbstractAction {
                                 if ((line1.contains("up()"))&&(scanner.nextLine().contains("{"))) {
                                     fileLines.add("    {") ;
                                     fileLines.add("        Schema::create('" + tableName + "', function (Blueprint $table) { });");
+                                    for (String line2 : upCode) {
+                                        fileLines.add(line2) ;
+                                    }
                                 }
 
                                 if ((line1.contains("down()"))&&(scanner.nextLine().contains("{"))) {
@@ -96,7 +157,7 @@ public class CreateMigration extends AbstractAction {
                             }
 
                         }
-                        JOptionPane.showMessageDialog(frame, "le fichier de migration a été crée avec succés");
+                        JOptionPane.showMessageDialog(frame, "le fichier de migration a été crée avec succés","SUCCES",JOptionPane.INFORMATION_MESSAGE);
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
