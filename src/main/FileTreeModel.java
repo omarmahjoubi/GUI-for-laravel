@@ -13,38 +13,43 @@ import java.util.Arrays;
 public class FileTreeModel implements TreeModel {
 
     private final ArrayList<TreeModelListener> mListeners = new ArrayList<>();
-    private File root;
+    private MyFile root;
 
-    public FileTreeModel(File root) {
+    public FileTreeModel(MyFile root) {
         this.root = root;
     }
 
     @Override
     public void addTreeModelListener(javax.swing.event.TreeModelListener l) {
         //this.addTreeModelListener(l);
+        mListeners.add(l);
     }
 
     @Override
     public Object getChild(Object parent, int index) {
-        File f = (File) parent;
+        MyFile f = (MyFile) parent;
         return f.listFiles()[index];
     }
 
     @Override
     public int getChildCount(Object parent) {
-        File f = (File) parent;
+        MyFile f = (MyFile) parent;
         if (!f.isDirectory()) {
             return 0;
         } else {
-            return f.list().length;
+            return f.listFiles().length;
         }
     }
 
     @Override
     public int getIndexOfChild(Object parent, Object child) {
-        File par = (File) parent;
-        File ch = (File) child;
-        return Arrays.asList(par.listFiles()).indexOf(ch);
+        MyFile par = (MyFile) parent;
+        MyFile ch = (MyFile) child;
+        final MyFile[] files = par.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            if (files[i] == ch) return i;
+        }
+        return -1;
     }
 
     @Override
@@ -54,19 +59,20 @@ public class FileTreeModel implements TreeModel {
 
     @Override
     public boolean isLeaf(Object node) {
-        File f = (File) node;
+        MyFile f = (MyFile) node;
         return !f.isDirectory();
     }
 
     @Override
     public void removeTreeModelListener(javax.swing.event.TreeModelListener l) {
-        this.removeTreeModelListener(l);
+        //this.removeTreeModelListener(l);
+        mListeners.remove(l);
     }
 
     @Override
     public void valueForPathChanged(javax.swing.tree.TreePath path, Object newValue) {
-        final File oldTmp = (File) path.getLastPathComponent();
-        final File oldFile = oldTmp;
+        final MyFile oldTmp = (MyFile) path.getLastPathComponent();
+        final File oldFile = oldTmp.getFile();
         final String newName = (String) newValue;
         final File newFile = new File(oldFile.getParentFile(), newName);
         oldFile.renameTo(newFile);
@@ -93,6 +99,40 @@ public class FileTreeModel implements TreeModel {
         final TreeModelEvent event = new TreeModelEvent(source, path, childIndices, children);
         for (final TreeModelListener l : mListeners) {
             l.treeStructureChanged(event);
+        }
+    }
+
+    static class MyFile {
+        private final File mFile;
+
+        public MyFile(final File pFile) {
+            mFile = pFile;
+        }
+
+        public boolean isDirectory() {
+            return mFile.isDirectory();
+        }
+
+        public MyFile[] listFiles() {
+            final File[] files = mFile.listFiles();
+            if (files == null) return null;
+            if (files.length < 1) return new MyFile[0];
+
+            final MyFile[] ret = new MyFile[files.length];
+            for (int i = 0; i < ret.length; i++) {
+                final File f = files[i];
+                ret[i] = new MyFile(f);
+            }
+            return ret;
+        }
+
+        public File getFile() {
+            return mFile;
+        }
+
+        @Override
+        public String toString() {
+            return mFile.getName();
         }
     }
 }

@@ -12,9 +12,6 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 
-
-    
-
     private JTextField field;
     private JTextField route;
     private JTextField view;
@@ -26,9 +23,7 @@ public class MainFrame extends JFrame {
     private JButton button4;
     private JLabel vueName;
     private JComboBox methodList;
-
-
-
+    
     public MainFrame() {
         super();
         build();
