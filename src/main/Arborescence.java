@@ -32,6 +32,7 @@ public class Arborescence extends AbstractAction {
         FileTreeModel.MyFile myFile = new FileTreeModel.MyFile(file);
         this.model = new FileTreeModel(myFile);
         this.tree = new MyJTree ( model, treeFrame);
+
     }
 
     @Override
@@ -40,10 +41,13 @@ public class Arborescence extends AbstractAction {
 //        JTree tree = new JTree(model);
         MouseListener ml = new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                                TreePath tp = tree.getPathForLocation(e.getX(),e.getY());
+
+                                TreePath tp = tree.getSelectionPath();
                                if(e.getClickCount() == 2) {
-                    System.out.println("Selected:  "+tp.getLastPathComponent());
-                    ProcessBuilder pb = new ProcessBuilder("Notepad.exe", ""+tp.getLastPathComponent());
+                                   FileTreeModel.MyFile file1 = (FileTreeModel.MyFile) tp.getLastPathComponent();
+                                   File file = file1.getFile() ;
+                    System.out.println("Selected:  "+file.getAbsolutePath());
+                    ProcessBuilder pb = new ProcessBuilder("Notepad++.exe", file.getAbsolutePath());
                     try {
                         pb.start();
                     } catch (IOException e1) {
