@@ -97,8 +97,11 @@ public class MainFrame extends JFrame {
 
         JMenu menu2 = new JMenu("Routage");
 
-        JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter route", this));
+        JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route retournant un vue", this));
         menu2.add(addRoute);
+
+        JMenuItem addRouteController = new JMenuItem(new OpenAddRouteControllerPanel("ajouter une route faisant appel a un controleur", this));
+        menu2.add(addRouteController);
 
         JMenuItem displayRoute = new JMenuItem(new DisplayRoutes("afficher les routes", this));
         menu2.add(displayRoute);
@@ -169,8 +172,13 @@ public class MainFrame extends JFrame {
 
         return panel ;
 
+    }
 
+    public JPanel buildAddRouteControllerPanel() {
 
+        this.setSize(500,400);
+        RouteControllerPanel panel = new RouteControllerPanel(this) ;
+        return panel ;
     }
 
     public JTextField getRoute() {
