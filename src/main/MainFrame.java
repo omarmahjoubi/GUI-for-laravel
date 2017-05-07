@@ -75,6 +75,9 @@ public class MainFrame extends JFrame {
         button4 = new JButton(new Arborescence("Afficher l'arborescence", this));
         panel.add(button4);
 
+        JButton button = new JButton(new MakeAuth("Créer un module d'authentification",this)) ;
+        panel.add(button) ;
+
         return panel;
     }
 
@@ -96,6 +99,9 @@ public class MainFrame extends JFrame {
         menuBar.add(menu1);
 
         JMenu menu2 = new JMenu("Routage");
+
+        JMenuItem addProtectedRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route protégé",this)) ;
+        menu2.add(addProtectedRoute) ;
 
         JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route retournant un vue", this));
         menu2.add(addRoute);
@@ -159,6 +165,9 @@ public class MainFrame extends JFrame {
 
         JButton confirm = new JButton(new AddRoute("Confirmer", this));
         panel.add(confirm);
+
+        JButton routeProtected = new JButton (new AddProtectedRoute("ajouter route protége",this)) ;
+        panel.add(routeProtected) ;
 
         return panel;
 

@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Created by Moslah_Hamza on 10/04/2017.
@@ -70,10 +72,18 @@ class MyJTree extends JTree implements ActionListener {
             System.out.println(file.getAbsolutePath());
             System.out.println(file.getParent());
             ProcessBuilder builder = new ProcessBuilder(
-                    "cmd.exe", "/c", "cd " + file.getParent() + " && del " + file.getAbsolutePath());
+                    "cmd.exe", "/c", "cd " + file.getParent() + " & cd && del " + file.getAbsolutePath());
             builder.redirectErrorStream(true);
             try {
                 p = builder.start();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                String line = "";
+
+
+                while ((line = reader.readLine()) != null) {
+                    System.out.println("line ===> "+line);
+                }
+
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

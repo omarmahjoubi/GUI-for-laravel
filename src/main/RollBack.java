@@ -30,7 +30,7 @@ public class RollBack extends AbstractAction {
                 if (line.equals("")) {
                     JOptionPane.showMessageDialog(frame, "une erreurs s'est produite! \nPeut etre que le serveur de la base de données n'a pas été lancé","ERROR",JOptionPane.ERROR_MESSAGE);
                 } else if (line.contains("Nothing")) {
-                    JOptionPane.showMessageDialog(frame, "vous n'avez pas d'action à roll backer","WARNING",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "vous n'avez pas de migration(s) à roll backer","WARNING",JOptionPane.WARNING_MESSAGE);
                 } else if (line.contains("Rolling")) {
                     JOptionPane.showMessageDialog(frame, "rollback effectué avec succés");
                 }
