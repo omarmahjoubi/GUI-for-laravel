@@ -69,10 +69,17 @@ class MyJTree extends JTree implements ActionListener {
         }
         if (e.getActionCommand().equals("remove")) {
             Process p = null;
-            System.out.println(file.getAbsolutePath());
-            System.out.println(file.getParent());
-            ProcessBuilder builder = new ProcessBuilder(
+            System.out.println("absolute ===> "+file.getAbsolutePath());
+            System.out.println("parent ====> " + file.getParent());
+
+            ProcessBuilder builder ;
+            if (file.isDirectory()) {
+                builder = new ProcessBuilder(
+                        "cmd.exe", "/c", "cd " + file.getParent() + " & cd && rmdir /Q /S " + file.getAbsolutePath());
+            } else {
+                builder = new ProcessBuilder(
                     "cmd.exe", "/c", "cd " + file.getParent() + " & cd && del " + file.getAbsolutePath());
+            }
             builder.redirectErrorStream(true);
             try {
                 p = builder.start();

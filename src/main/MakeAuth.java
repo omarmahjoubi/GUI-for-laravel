@@ -23,7 +23,7 @@ public class MakeAuth extends AbstractAction {
         boolean auth = true;
         BufferedReader br = new BufferedReader(new FileReader(Open.absolutePathProject + "/routes/web.php"));
         String line;
-        while (((line = br.readLine()) != null) && (line.indexOf("Route::group(['middleware' => 'auth'], function (){") == -1)) {
+        while (((line = br.readLine()) != null) && (line.indexOf("Route::group(['middleware' => 'auth'], function (){") == -1)&&(line.indexOf("Auth::routes();")==-1)) {
         }
         if (line != null)
             auth = false;
@@ -45,7 +45,7 @@ public class MakeAuth extends AbstractAction {
         if (Open.absolutePathProject == null) {
             JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
         } else {
-            String command4 = "cmd.exe /c " + "cd " + Open.absolutePathProject + " & cd & php artisan make:auth";
+            String command4 = "cmd.exe /c " + " cd " + Open.absolutePathProject + " & php artisan make:auth";
             try {
                 auth = verify();
             } catch (IOException e1) {
@@ -59,13 +59,17 @@ public class MakeAuth extends AbstractAction {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
                     String line = "";
 
+                    line = reader.readLine() ;
 
-                    while ((line = reader.readLine()) != null) {
-                        System.out.println(line);
+                    if (line.contains("successfully")) {
+                        addMiddleware();
+                        JOptionPane.showMessageDialog(frame, "le module d'authentification a été crée avec succés");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(frame, "une erreur s'est produite durant la création du module d'autentification","ERROR",JOptionPane.ERROR_MESSAGE);
                     }
 
-                    addMiddleware();
-                    JOptionPane.showMessageDialog(frame, "le module d'authentification a été crée avec succés");
+
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

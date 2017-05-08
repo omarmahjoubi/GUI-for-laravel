@@ -127,6 +127,19 @@ public class MainFrame extends JFrame {
 
         menuBar.add(menu3);
 
+        JMenu menu4 = new JMenu("Ajouter");
+
+        JMenuItem addController = new JMenuItem(new OpenAddPanel("ajouter un contrôleur", this,"ctrl"));
+        menu4.add(addController);
+
+        JMenuItem addModel = new JMenuItem(new OpenAddPanel("ajouter un modéle", this,"mdl"));
+        menu4.add(addModel);
+
+        JMenuItem addMiddleware = new JMenuItem(new OpenAddPanel("ajouter un middleware", this,"mdlw"));
+        menu4.add(addMiddleware);
+
+        menuBar.add(menu4);
+
         setJMenuBar(menuBar);
 
 
@@ -187,6 +200,24 @@ public class MainFrame extends JFrame {
 
         this.setSize(500,400);
         RouteControllerPanel panel = new RouteControllerPanel(this) ;
+        return panel ;
+    }
+
+    public JPanel buildAddControllerPanel() {
+        this.setSize(600,300);
+        AddControllerPanel panel = new AddControllerPanel(this) ;
+        return panel ;
+    }
+
+    public JPanel buildAddModelPanel() {
+        this.setSize(600,300);
+        AddModelPanel panel = new AddModelPanel(this) ;
+        return panel ;
+    }
+
+    public JPanel buildAddMiddlewarePanel() {
+        this.setSize(600,300);
+        AddMiddlewarePanel panel = new AddMiddlewarePanel(this) ;
         return panel ;
     }
 
