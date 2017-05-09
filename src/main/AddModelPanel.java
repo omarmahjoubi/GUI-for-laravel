@@ -7,8 +7,8 @@ public class AddModelPanel extends AddPanel {
 
     public  AddModelPanel(MainFrame frame) {
         super(frame) ;
-        name_label.setText("Nom du modéle");
-        dir_label.setText("répertoire contenant le modéle (Optionel)");
+        nameLabel.setText("Nom du modéle");
+        dirLabel.setText("répertoire contenant le modéle (Optionel)");
     }
 
 }

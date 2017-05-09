@@ -9,8 +9,8 @@ public class AddControllerPanel extends AddPanel {
 
     public  AddControllerPanel(MainFrame frame) {
         super(frame) ;
-        name_label.setText("Nom du contrôleur");
-        dir_label.setText("répertoire contenant le contrôleur (Optionel)");
+        nameLabel.setText("Nom du contrôleur");
+        dirLabel.setText("répertoire contenant le contrôleur (Optionel)");
     }
 
 }

@@ -11,9 +11,11 @@ import java.io.File;
 public class OpenView extends AbstractAction {
     public static String viewName = "";
     private MainFrame frame ;
-    public OpenView(String text,MainFrame frame) {
+    private AddRoutePanel panel ;
+    public OpenView(String text,AddRoutePanel panel ,MainFrame frame) {
         super(text) ;
         this.frame=frame ;
+        this.panel = panel ;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -49,7 +51,7 @@ public class OpenView extends AbstractAction {
                 String[] list1 = list[1].split("/") ;
                 viewName = "" ;
                 String viewNameTodisplay = list1[list1.length-1] ;
-                this.frame.getVueName().setText(viewNameTodisplay);
+                this.panel.getVueName().setText(viewNameTodisplay);
 
                 for (String el : list1) {
                     viewName = viewName + el + '.' ;

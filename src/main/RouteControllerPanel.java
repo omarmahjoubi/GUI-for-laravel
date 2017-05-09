@@ -77,8 +77,11 @@ public class RouteControllerPanel extends JPanel {
         method.setColumns(20);
         emptyPanels[3][1].add(method);
 
-        JButton confirm = new JButton (new AddRouteController("Confirmer",this,this.frame)) ;
+        JButton confirm = new JButton (new AddRouteController("Ajouter",this,this.frame)) ;
         emptyPanels[4][0].add(confirm);
+
+        JButton confirmProtected = new JButton (new AddProtectedRoute("Ajouter route protégé",this,this.frame,"cont")) ;
+        emptyPanels[4][1].add(confirmProtected);
 
 
     }

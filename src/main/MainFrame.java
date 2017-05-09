@@ -100,8 +100,7 @@ public class MainFrame extends JFrame {
 
         JMenu menu2 = new JMenu("Routage");
 
-        JMenuItem addProtectedRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route protégé",this)) ;
-        menu2.add(addProtectedRoute) ;
+
 
         JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route retournant un vue", this));
         menu2.add(addRoute);
@@ -150,39 +149,9 @@ public class MainFrame extends JFrame {
     }
 
     public JPanel buildAddRoutePanel() {
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
-        panel.setBackground(Color.white);
-
-        JLabel label = new JLabel("adresse du route");
-        panel.add(label);
-        route = new JTextField();
-        route.setColumns(20);
-        panel.add(route);
-
-        JLabel label1 = new JLabel("methode du route");
-        panel.add(label1);
-
-        String[] methods = {"GET", "POST", "PUT", "DELETE"};
-        methodList = new JComboBox(methods);
-        methodList.setPreferredSize(new Dimension(200, 20));
-        methodList.setSelectedItem(0);
-        panel.add(methodList);
-
-        JButton button = new JButton(new OpenView("sélectionner la vue HTML", this));
-        panel.add(button);
-
-        vueName = new JLabel("aucune vue séléctionné");
-        panel.add(vueName);
-
-
-        JButton confirm = new JButton(new AddRoute("Confirmer", this));
-        panel.add(confirm);
-
-        JButton routeProtected = new JButton (new AddProtectedRoute("ajouter route protége",this)) ;
-        panel.add(routeProtected) ;
-
-        return panel;
+        this.setSize(500,400);
+        AddRoutePanel panel = new AddRoutePanel(this) ;
+        return panel ;
 
     }
 

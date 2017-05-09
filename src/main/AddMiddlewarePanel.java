@@ -7,8 +7,8 @@ public class AddMiddlewarePanel extends AddPanel {
 
     public  AddMiddlewarePanel(MainFrame frame) {
         super(frame) ;
-        name_label.setText("Nom du middleware");
-        dir_label.setText("répertoire contenant le middleware (Optionel)");
+        nameLabel.setText("Nom du middleware");
+        dirLabel.setText("répertoire contenant le middleware (Optionel)");
     }
 
 }

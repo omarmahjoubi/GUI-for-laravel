@@ -9,10 +9,10 @@ import java.awt.*;
 public class AddPanel extends JPanel {
 
     protected MainFrame frame ;
-    protected JLabel name_label ;
-    protected JLabel dir_label ;
+    protected JLabel nameLabel ;
+    protected JLabel dirLabel ;
     protected JTextField name ;
-    protected JTextField name_dir ;
+    protected JTextField nameDir ;
 
     public AddPanel(MainFrame frame) {
 
@@ -20,10 +20,10 @@ public class AddPanel extends JPanel {
 
         this.frame=frame ;
 
-       name_label = new JLabel() ;
-       dir_label = new JLabel() ;
+       nameLabel = new JLabel() ;
+       dirLabel = new JLabel() ;
        name = new JTextField()  ;
-       name_dir = new JTextField() ;
+       nameDir = new JTextField() ;
 
         setLayout(new GridLayout(3, 2));
         setBackground(Color.white);
@@ -38,7 +38,7 @@ public class AddPanel extends JPanel {
                 add(emptyPanels[m][l]);
             }
         }
-        emptyPanels[0][0].add(name_label) ;
+        emptyPanels[0][0].add(nameLabel) ;
 
         name.setColumns(15);
         emptyPanels[0][1].add(name) ;
@@ -47,10 +47,10 @@ public class AddPanel extends JPanel {
 
 
 
-        emptyPanels[1][0].add(dir_label);
+        emptyPanels[1][0].add(dirLabel);
 
-        name_dir.setColumns(15);
-        emptyPanels[1][1].add(name_dir) ;
+        nameDir.setColumns(15);
+        emptyPanels[1][1].add(nameDir) ;
 
         JButton confirm = new JButton (new Add("Ajouter",this,this.frame)) ;
         emptyPanels[2][1].add(confirm);
@@ -62,7 +62,16 @@ public class AddPanel extends JPanel {
         return name;
     }
 
-    public JTextField getName_dir() {
-        return name_dir;
+    public JTextField getnameDir() {
+        return nameDir;
+    }
+
+
+    public JLabel getNameLabel() {
+        return nameLabel;
+    }
+
+    public JLabel getDirLabel() {
+        return dirLabel;
     }
 }

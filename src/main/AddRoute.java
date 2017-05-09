@@ -11,14 +11,16 @@ import java.util.ArrayList;
  */
 public class AddRoute extends AbstractAction {
     private MainFrame frame;
+    private AddRoutePanel panel;
     private String projectPath = "";
     List<String> lines = new ArrayList<String>();
     String line = null;
     String route = "";
 
-    public AddRoute(String s, MainFrame mainFrame) {
+    public AddRoute(String s,AddRoutePanel panel, MainFrame mainFrame) {
         super(s);
         this.frame = mainFrame;
+        this.panel=panel ;
     }
 
     @Override
@@ -27,9 +29,9 @@ public class AddRoute extends AbstractAction {
         if (Open.absolutePathProject == null) {
             JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
         } else {
-            String route = this.frame.getRoute().getText();
+            String route = this.panel.getRoute().getText();
             String view = OpenView.viewName;
-            String method = this.frame.getMethodList().getSelectedItem().toString() ;
+            String method = this.panel.getMethodList().getSelectedItem().toString() ;
             if (route.equals("")) {
                 JOptionPane.showMessageDialog(frame, "Veuillez spécifier l'adresse du route à ajouter");
             } else if (view.equals("")) {
@@ -42,6 +44,8 @@ public class AddRoute extends AbstractAction {
                             "  return view('" + view + "');\n" +
                             "});");
                     writer.close();
+                    OpenView.viewName="" ;
+                    this.panel.getVueName().setText("aucune vue séléctionné");
                     JOptionPane.showMessageDialog(frame, "votre route a été ajouté avec succés");
                 } catch (Exception e1) {
                     e1.printStackTrace();
