@@ -79,6 +79,9 @@ public class MainFrame extends JFrame {
         JButton button = new JButton(new MakeAuth("Créer un module d'authentification",this)) ;
         panel.add(button) ;
 
+        JButton button1 = new JButton(new LaunchServer("lancer le serveur",this)) ;
+        panel.add(button1);
+
         return panel;
     }
 
