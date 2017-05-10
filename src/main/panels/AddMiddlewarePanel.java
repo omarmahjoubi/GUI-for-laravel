@@ -1,4 +1,7 @@
-package main;
+package main.panels;
+
+import main.MainFrame;
+import main.panels.AddPanel;
 
 /**
  * Created by omar_ on 08/05/2017.

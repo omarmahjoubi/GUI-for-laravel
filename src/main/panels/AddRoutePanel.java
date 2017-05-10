@@ -1,6 +1,9 @@
-package main;
+package main.panels;
 
-import sun.applet.Main;
+import main.actions.AddProtectedRoute;
+import main.actions.AddRoute;
+import main.MainFrame;
+import main.actions.OpenView;
 
 import javax.swing.*;
 import java.awt.*;

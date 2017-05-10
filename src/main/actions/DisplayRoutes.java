@@ -1,4 +1,4 @@
-package main;
+package main.actions;
 
 /**
  * Created by Moslah_Hamza on 27/03/2017.
@@ -11,7 +11,10 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
+
+import main.MainFrame;
 import main.guielement.DynamicModel;
+import main.guielement.Route;
 import main.guielement.RoutesTable;
 
 public class DisplayRoutes extends AbstractAction {

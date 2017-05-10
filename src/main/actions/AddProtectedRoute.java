@@ -1,4 +1,8 @@
-package main;
+package main.actions;
+
+import main.MainFrame;
+import main.panels.AddRoutePanel;
+import main.panels.RouteControllerPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

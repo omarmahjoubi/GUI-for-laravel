@@ -1,5 +1,8 @@
-package main;
+package main.actions;
 
+
+import main.MainFrame;
+import main.panels.MigrationPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

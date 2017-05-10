@@ -1,9 +1,10 @@
-package main;
+package main.panels;
+
+import main.actions.CreateMigration;
+import main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by omar_ on 16/04/2017.

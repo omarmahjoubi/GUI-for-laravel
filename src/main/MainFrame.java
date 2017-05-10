@@ -3,9 +3,10 @@ package main;
  * Created by Moslah_Hamza on 27/03/2017.
  */
 
+import main.actions.*;
+import main.panels.*;
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -61,7 +62,7 @@ public class MainFrame extends JFrame {
 
 
 
-    void changePanel() {
+    public void changePanel() {
         setContentPane(buildSecondPane());
         validate();
     }

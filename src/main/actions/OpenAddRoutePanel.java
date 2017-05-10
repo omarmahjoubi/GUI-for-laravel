@@ -1,5 +1,7 @@
-package main;
+package main.actions;
 
+
+import main.MainFrame;
 
 import java.awt.event.ActionEvent;
 

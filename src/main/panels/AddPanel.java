@@ -1,4 +1,7 @@
-package main;
+package main.panels;
+
+import main.actions.Add;
+import main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;

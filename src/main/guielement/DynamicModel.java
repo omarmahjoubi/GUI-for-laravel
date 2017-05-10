@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import main.Route;
-
 public class DynamicModel extends AbstractTableModel {
     private final ArrayList<Route> routes = new ArrayList<Route>();
 

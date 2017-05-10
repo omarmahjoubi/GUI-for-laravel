@@ -1,8 +1,10 @@
-package main;
+package main.actions;
 
 /**
  * Created by Moslah_Hamza on 27/03/2017.
  */
+import main.MainFrame;
+
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.File;

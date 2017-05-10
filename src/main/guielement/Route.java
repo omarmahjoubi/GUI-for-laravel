@@ -1,4 +1,4 @@
-package main;
+package main.guielement;
 
 /**
  * Created by Moslah_Hamza on 27/03/2017.

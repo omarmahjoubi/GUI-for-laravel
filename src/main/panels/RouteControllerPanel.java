@@ -1,4 +1,9 @@
-package main;
+package main.panels;
+
+import main.actions.AddProtectedRoute;
+import main.actions.AddRouteController;
+import main.MainFrame;
+import main.actions.Open;
 
 import javax.swing.*;
 import java.awt.*;
