@@ -24,7 +24,8 @@ public class MainFrame extends JFrame {
     private JButton button4;
     private JLabel vueName;
     private JComboBox methodList;
-    
+    private JButton server ;
+
     public MainFrame() {
         super();
         build();
@@ -61,7 +62,6 @@ public class MainFrame extends JFrame {
     }
 
 
-
     public void changePanel() {
         setContentPane(buildSecondPane());
         validate();
@@ -76,11 +76,17 @@ public class MainFrame extends JFrame {
         button4 = new JButton(new Arborescence("Afficher l'arborescence", this));
         panel.add(button4);
 
-        JButton button = new JButton(new MakeAuth("Créer un module d'authentification",this)) ;
-        panel.add(button) ;
+        JButton button = new JButton(new MakeAuth("Créer un module d'authentification", this));
+        panel.add(button);
 
-        JButton button1 = new JButton(new LaunchServer("lancer le serveur",this)) ;
-        panel.add(button1);
+
+        if (LaunchServer.launched == false) {
+            server = new JButton(new LaunchServer("lancer le serveur", this));
+        } else {
+
+           server = new JButton(new StopServer("arreter le serveur", this));
+        }
+        panel.add(server);
 
         return panel;
     }
@@ -105,7 +111,6 @@ public class MainFrame extends JFrame {
         JMenu menu2 = new JMenu("Routage");
 
 
-
         JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route retournant un vue", this));
         menu2.add(addRoute);
 
@@ -122,23 +127,23 @@ public class MainFrame extends JFrame {
         JMenuItem addMigration = new JMenuItem(new OpenAddMigrationPanel("ajouter une migration", this));
         menu3.add(addMigration);
 
-        JMenuItem makeMigration = new JMenuItem(new MakeMigration("effectuer les migrations",this)) ;
-        menu3.add(makeMigration) ;
+        JMenuItem makeMigration = new JMenuItem(new MakeMigration("effectuer les migrations", this));
+        menu3.add(makeMigration);
 
-        JMenuItem  rollBack = new JMenuItem(new RollBack("effectuer un Roll Back",this)) ;
-        menu3.add(rollBack) ;
+        JMenuItem rollBack = new JMenuItem(new RollBack("effectuer un Roll Back", this));
+        menu3.add(rollBack);
 
         menuBar.add(menu3);
 
         JMenu menu4 = new JMenu("Ajouter");
 
-        JMenuItem addController = new JMenuItem(new OpenAddPanel("ajouter un contrôleur", this,"ctrl"));
+        JMenuItem addController = new JMenuItem(new OpenAddPanel("ajouter un contrôleur", this, "ctrl"));
         menu4.add(addController);
 
-        JMenuItem addModel = new JMenuItem(new OpenAddPanel("ajouter un modéle", this,"mdl"));
+        JMenuItem addModel = new JMenuItem(new OpenAddPanel("ajouter un modéle", this, "mdl"));
         menu4.add(addModel);
 
-        JMenuItem addMiddleware = new JMenuItem(new OpenAddPanel("ajouter un middleware", this,"mdlw"));
+        JMenuItem addMiddleware = new JMenuItem(new OpenAddPanel("ajouter un middleware", this, "mdlw"));
         menu4.add(addMiddleware);
 
         menuBar.add(menu4);
@@ -153,9 +158,9 @@ public class MainFrame extends JFrame {
     }
 
     public JPanel buildAddRoutePanel() {
-        this.setSize(500,400);
-        AddRoutePanel panel = new AddRoutePanel(this) ;
-        return panel ;
+        this.setSize(500, 400);
+        AddRoutePanel panel = new AddRoutePanel(this);
+        return panel;
 
     }
 
@@ -163,35 +168,35 @@ public class MainFrame extends JFrame {
 
         this.setSize(1000, 600);
 
-        MigrationPanel panel = new MigrationPanel(this) ;
+        MigrationPanel panel = new MigrationPanel(this);
 
-        return panel ;
+        return panel;
 
     }
 
     public JPanel buildAddRouteControllerPanel() {
 
-        this.setSize(500,400);
-        RouteControllerPanel panel = new RouteControllerPanel(this) ;
-        return panel ;
+        this.setSize(500, 400);
+        RouteControllerPanel panel = new RouteControllerPanel(this);
+        return panel;
     }
 
     public JPanel buildAddControllerPanel() {
-        this.setSize(600,300);
-        AddControllerPanel panel = new AddControllerPanel(this) ;
-        return panel ;
+        this.setSize(600, 300);
+        AddControllerPanel panel = new AddControllerPanel(this);
+        return panel;
     }
 
     public JPanel buildAddModelPanel() {
-        this.setSize(600,300);
-        AddModelPanel panel = new AddModelPanel(this) ;
-        return panel ;
+        this.setSize(600, 300);
+        AddModelPanel panel = new AddModelPanel(this);
+        return panel;
     }
 
     public JPanel buildAddMiddlewarePanel() {
-        this.setSize(600,300);
-        AddMiddlewarePanel panel = new AddMiddlewarePanel(this) ;
-        return panel ;
+        this.setSize(600, 300);
+        AddMiddlewarePanel panel = new AddMiddlewarePanel(this);
+        return panel;
     }
 
     public JTextField getRoute() {
@@ -214,6 +219,7 @@ public class MainFrame extends JFrame {
         return methodList;
     }
 
-
-
+    public JButton getServer() {
+        return server;
+    }
 }
