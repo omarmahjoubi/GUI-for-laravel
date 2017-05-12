@@ -43,6 +43,7 @@ public class AddRoute extends AbstractAction {
                 try {
                     FileWriter fw = new FileWriter(Open.absolutePathProject + "/routes/web.php", true);
                     Writer writer = new BufferedWriter(fw);
+
                     writer.write("\nRoute::"+ method.toLowerCase() + "('/" + route + "', function() {\n" +
                             "  return view('" + view + "');\n" +
                             "});");
