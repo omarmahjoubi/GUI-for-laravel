@@ -57,15 +57,11 @@ public class AddPanel extends JPanel {
         name.setColumns(15);
         emptyPanels[1][1].add(name) ;
 
-<<<<<<< HEAD
-        emptyPanels[1][0].add(dirLabel);
-=======
 
 
 
 
         emptyPanels[2][0].add(dirLabel);
->>>>>>> fixing
 
         nameDir.setColumns(15);
         emptyPanels[2][1].add(nameDir) ;

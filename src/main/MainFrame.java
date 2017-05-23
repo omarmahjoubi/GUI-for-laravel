@@ -27,6 +27,7 @@ public class MainFrame extends JFrame {
     private JButton button4;
     private JLabel vueName;
     private JComboBox methodList;
+    private JButton server ;
     
     public MainFrame() {
         super();
