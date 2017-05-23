@@ -1,6 +1,7 @@
 package main.guielement;
 
 import main.MainFrame;
+import main.actions.LaunchServer;
 import main.actions.Open;
 
 import javax.swing.*;
@@ -32,6 +33,9 @@ public class Worker extends SwingWorker<Void, String> {
             line = reader.readLine();
             if (line.contains("server started")) {
                 msg = line.substring(line.indexOf("<") + 1, line.indexOf(">"));
+                LaunchServer.launched = true ;
+                this.frame.setContentPane(this.frame.buildSecondPane());
+                this.frame.validate();
             } else {
                 msg = "une erreur s'es produite durant le lancement du serveur";
 

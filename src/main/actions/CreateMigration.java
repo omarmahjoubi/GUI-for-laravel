@@ -60,7 +60,7 @@ public class CreateMigration extends AbstractAction {
                         if (!(name1.equals(""))) {
                             String s = begin + this.panel.getType1().getSelectedItem().toString() + "('" + name1 + "')" ;
                             if (this.panel.getIndex1().getSelectedItem().toString().equals("primary")) {
-                                s = s + "->primary()" ;
+                                s = s + "->primary()->increments()" ;
                             } else if (this.panel.getIndex1().getSelectedItem().toString().equals("unique")) {
                                 s = s + "->unique()" ;
                             }

@@ -16,7 +16,10 @@ import java.util.ArrayList;
 public class LaunchServer extends AbstractAction {
 
     private MainFrame frame;
-    public static ArrayList<String> pidList = new ArrayList<>() ;
+
+
+
+    public static boolean launched = false ;
 
     public LaunchServer(String text, MainFrame frame) {
         super(text);
@@ -28,33 +31,8 @@ public class LaunchServer extends AbstractAction {
         if (Open.absolutePathProject == null) {
             JOptionPane.showMessageDialog(frame, "vous n'avez pas encore ouvert de projet laravel");
         } else {
-
-            Process p1;
-            try {
                 Worker worker = new Worker(this.frame);
                 worker.execute();
-
-
-                String command1 = "cmd.exe /c " + "tasklist /FO CSV /FI \"IMAGENAME eq php.exe\""; //récupérer du pid(s) de
-                p1 = Runtime.getRuntime().exec(command1);                                      //thread du serveur
-                p1.waitFor();
-                BufferedReader reader1 = new BufferedReader(new InputStreamReader(p1.getInputStream()));
-                String line1 = "";
-                while ((line1 = reader1.readLine()) != null) {
-                    if (line1.contains("php.exe")) {
-                        System.out.println("php line ===> " + line1);
-                        String[] list = line1.split(",") ;
-                         pidList.add(list[1].substring(1,list[1].length()-1)) ;
-                    }
-                }
-                for (String pid : pidList) {
-                    System.out.println("pid ==> " + pid) ;
-                }
-
-
-            } catch (IOException | InterruptedException e1) {
-                e1.printStackTrace();
-            }
         }
     }
 }

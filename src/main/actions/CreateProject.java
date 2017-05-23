@@ -26,7 +26,7 @@ public class CreateProject extends AbstractAction {
         Process p = null;
         try {
 
-            projectPath = Open.projectPath;
+            projectPath = Open.absolutePathProject;
             System.out.println("projectPath = " + projectPath);
             if(projectPath!=""){
                 ProcessBuilder builder = new ProcessBuilder(
@@ -50,7 +50,7 @@ public class CreateProject extends AbstractAction {
                     }
                     System.out.println(line);
                 }
-                JOptionPane.showMessageDialog(frame, "le projet " + this.frame.getField().getText() + "été crée avec succés");
+                JOptionPane.showMessageDialog(frame, "le projet " + this.frame.getField().getText() + " a été crée avec succés");
                 frame.changePanel();
             }
             else {
