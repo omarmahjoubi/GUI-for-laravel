@@ -2,6 +2,8 @@ package main.panels;
 
 import main.actions.Add;
 import main.MainFrame;
+import main.actions.Open;
+import main.actions.OpenHome;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,7 @@ import java.awt.*;
 public class AddPanel extends JPanel {
 
     protected MainFrame frame ;
+    protected JButton home ;
     protected JLabel nameLabel ;
     protected JLabel dirLabel ;
     protected JTextField name ;
@@ -28,31 +31,47 @@ public class AddPanel extends JPanel {
        name = new JTextField()  ;
        nameDir = new JTextField() ;
 
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridLayout(4, 2));
         setBackground(Color.white);
 
 
         // des panels vides pour representer les celluse du grid layout
-        JPanel[][] emptyPanels = new JPanel[3][2];
-        for (int m = 0; m < 3; m++) {
+        JPanel[][] emptyPanels = new JPanel[4][2];
+        for (int m = 0; m < 4; m++) {
             for (int l = 0; l < 2; l++) {
 
                 emptyPanels[m][l] = new JPanel();
                 add(emptyPanels[m][l]);
             }
         }
-        emptyPanels[0][0].add(nameLabel) ;
+        if (Open.absolutePathProject!=null) {
+           home =  new JButton( new OpenHome("Acceuil",this.frame,"opened")) ;
+        } else {
+            home =  new JButton( new OpenHome("Acceuil",this.frame,"")) ;
+        }
+
+        emptyPanels[0][1].add(home) ;
+
+        emptyPanels[1][0].add(nameLabel) ;
 
         name.setColumns(15);
-        emptyPanels[0][1].add(name) ;
+        emptyPanels[1][1].add(name) ;
 
+<<<<<<< HEAD
         emptyPanels[1][0].add(dirLabel);
+=======
+
+
+
+
+        emptyPanels[2][0].add(dirLabel);
+>>>>>>> fixing
 
         nameDir.setColumns(15);
-        emptyPanels[1][1].add(nameDir) ;
+        emptyPanels[2][1].add(nameDir) ;
 
         JButton confirm = new JButton (new Add("Ajouter",this,this.frame)) ;
-        emptyPanels[2][1].add(confirm);
+        emptyPanels[3][1].add(confirm);
 
     }
 

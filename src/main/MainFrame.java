@@ -7,6 +7,9 @@ import main.actions.*;
 import main.panels.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
@@ -40,22 +43,44 @@ public class MainFrame extends JFrame {
     }
 
     public JPanel buildContentPane() {
+        JButton home ;
+
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(4,2));
         panel.setBackground(Color.white);
 
+        JPanel[][] emptyPanels = new JPanel[4][2];
+        for (int m = 0; m < 4; m++) {
+            for (int l = 0; l < 2; l++) {
+
+                emptyPanels[m][l] = new JPanel();
+                panel.add(emptyPanels[m][l]);
+            }
+        }
+
+        if (Open.absolutePathProject!=null) {
+            home =  new JButton( new OpenHome("Acceuil",this,"opened")) ;
+        } else {
+            home =  new JButton( new OpenHome("Acceuil",this,"")) ;
+        }
+
+        emptyPanels[0][1].add(home) ;
+
+
         JLabel label = new JLabel("Nom du projet");
-        panel.add(label);
+        emptyPanels[1][0].add(label) ;
 
         field = new JTextField();
-        field.setColumns(10);
-        panel.add(field);
+        field.setColumns(20);
+        emptyPanels[1][1].add(field);
+
+
+
+        button1 = new JButton(new Open("choisir chemin du projet", this, ""));
+        emptyPanels[2][1].add(button1) ;
 
         button = new JButton(new CreateProject("créer le projet", this));
-        panel.add(button);
-
-        button1 = new JButton(new Open("Spécifier le chemin de votre projet", this, ""));
-        panel.add(button1);
+        emptyPanels[3][1].add(button) ;
 
         return panel;
     }
@@ -66,26 +91,52 @@ public class MainFrame extends JFrame {
     }
 
     public JPanel buildSecondPane() {
+
+        this.setSize(530,400);
+
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
         panel.setBackground(Color.white);
 
+        panel.setLayout(new GridLayout(3,1));
+        panel.setBackground(Color.white);
+
+        JPanel[][] emptyPanels = new JPanel[3][2];
+        for (int m = 0; m < 3; m++) {
+            for (int l = 0; l < 1; l++) {
+
+                emptyPanels[m][l] = new JPanel();
+                panel.add(emptyPanels[m][l]);
+            }
+        }
 
         button4 = new JButton(new Arborescence("Afficher l'arborescence", this));
-        panel.add(button4);
+        emptyPanels[0][0].add(button4);
 
-        JButton button = new JButton(new MakeAuth("Créer un module d'authentification",this)) ;
-        panel.add(button) ;
 
-        JButton button1 = new JButton(new LaunchServer("lancer le serveur",this)) ;
-        panel.add(button1);
+
+        JButton button = new JButton(new MakeAuth("Créer un module d'authentification", this));
+        emptyPanels[1][0].add(button);
+
+
+        if (LaunchServer.launched == false) {
+            server = new JButton(new LaunchServer("lancer le serveur", this));
+        } else {
+
+           server = new JButton(new StopServer("arreter le serveur", this));
+        }
+        emptyPanels[2][0].add(server);
+
 
         return panel;
     }
 
     public JPanel buildMainPane() {
+
+        setSize(530,400);
+
         JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        panel.setLayout(new GridLayout(3,1));
         panel.setBackground(Color.white);
         JFrame frame = this;
 
@@ -141,16 +192,44 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(menuBar);
 
-        button2 = new JButton(new Guide("Guide", this));
-        panel.add(button2);
+
+        JPanel[][] emptyPanels = new JPanel[3][1];
+        for (int m = 0; m < 3; m++) {
+            for (int l = 0; l < 1; l++) {
+
+                emptyPanels[m][l] = new JPanel();
+                panel.add(emptyPanels[m][l]);
+            }
+        }
+
+        JLabel label = new JLabel("Bienvenue sur Larvel GUI") ;
+        label.setFont(new Font("Serif", Font.PLAIN, 20));
+        emptyPanels[0][0].add(label) ;
+
+        JLabel label1 = new JLabel("<html>Vous pouvez créér votre projet et utiliser Laravel GUI <br>" +
+                " pour vous aider à developper le meilleur site web</html>") ;
+        emptyPanels[1][0].add(label1);
+        JButton cr = new JButton(new OpenCreatePanel("Créer un projet", this)) ;
+        emptyPanels[1][0].add(cr) ;
+
+        JLabel label2 = new JLabel("<html>Ou bien vous pouvez travailler sur un projet larval existant <br>"
+                +" pour y ajouter de nouvelles fonctionnalités<html>");
+        emptyPanels[2][0].add(label2);
+        JButton op = new JButton(new Open("Ouvrir un projet", this, "old")) ;
+        emptyPanels[2][0].add(op) ;
+
+
+
 
         return panel;
     }
 
     public JPanel buildAddRoutePanel() {
-        this.setSize(500,400);
-        AddRoutePanel panel = new AddRoutePanel(this) ;
-        return panel ;
+
+        this.setSize(530, 400);
+        AddRoutePanel panel = new AddRoutePanel(this);
+        return panel;
+
 
     }
 
@@ -166,27 +245,29 @@ public class MainFrame extends JFrame {
 
     public JPanel buildAddRouteControllerPanel() {
 
-        this.setSize(500,400);
-        RouteControllerPanel panel = new RouteControllerPanel(this) ;
-        return panel ;
+
+        this.setSize(530, 400);
+        RouteControllerPanel panel = new RouteControllerPanel(this);
+        return panel;
     }
 
     public JPanel buildAddControllerPanel() {
-        this.setSize(600,300);
-        AddControllerPanel panel = new AddControllerPanel(this) ;
-        return panel ;
+        this.setSize(530, 400);
+        AddControllerPanel panel = new AddControllerPanel(this);
+        return panel;
     }
 
     public JPanel buildAddModelPanel() {
-        this.setSize(600,300);
-        AddModelPanel panel = new AddModelPanel(this) ;
-        return panel ;
+        this.setSize(530, 400);
+        AddModelPanel panel = new AddModelPanel(this);
+        return panel;
     }
 
     public JPanel buildAddMiddlewarePanel() {
-        this.setSize(600,300);
-        AddMiddlewarePanel panel = new AddMiddlewarePanel(this) ;
-        return panel ;
+        this.setSize(530, 400);
+        AddMiddlewarePanel panel = new AddMiddlewarePanel(this);
+        return panel;
+
     }
 
     public JTextField getRoute() {
