@@ -27,7 +27,5 @@ public class OpenAddPanel extends AbstractAction {
             this.frame.setContentPane(this.frame.buildAddMiddlewarePanel());
         }
         this.frame.validate();
-
     }
-
 }

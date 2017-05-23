@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class Arborescence extends AbstractAction {
     private MainFrame frame;
-    private JFrame treeFrame = new JFrame();
+    private JFrame treeFrame;
     private MyJTree tree ;
     private TreeModel model;
     private JScrollPane scrollPane;
@@ -26,17 +26,29 @@ public class Arborescence extends AbstractAction {
     public Arborescence(String s, MainFrame mainFrame) {
         super(s);
         this.frame = frame;
-        File file = new File(Open.absolutePathProject);
-        FileTreeModel.MyFile myFile = new FileTreeModel.MyFile(file);
-        this.model = new FileTreeModel(myFile);
-        this.tree = new MyJTree ( model, treeFrame);
-
+        projectPath = Open.absolutePathProject;
+        System.out.println("tree project path: "+projectPath);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 //        TreeModel model = new FileTreeModel(new File(Open.absolutePathProject));
 //        JTree tree = new JTree(model);
+        if(Arborescence.this.treeFrame != null){
+            Arborescence.this.treeFrame.setVisible(false);
+            Arborescence.this.treeFrame.dispose();
+        }
+        File file = new File(projectPath);
+        FileTreeModel.MyFile myFile = new FileTreeModel.MyFile(file);
+        this.model = new FileTreeModel(myFile);
+        this.treeFrame = new JFrame();
+
+        if(Arborescence.this.treeFrame.isVisible()){
+            System.out.println("it's visible");
+        }
+        this.tree = new MyJTree ( model, treeFrame);
+        this.scrollPane = new JScrollPane(tree);
+        System.out.println("tree project path: "+Open.absolutePathProject);
         MouseListener ml = new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
 
@@ -45,7 +57,7 @@ public class Arborescence extends AbstractAction {
                                    FileTreeModel.MyFile file1 = (FileTreeModel.MyFile) tp.getLastPathComponent();
                                    File file = file1.getFile() ;
                     System.out.println("Selected:  "+file.getAbsolutePath());
-                    ProcessBuilder pb = new ProcessBuilder("Notepad++.exe", file.getAbsolutePath());
+                    ProcessBuilder pb = new ProcessBuilder("Notepad.exe", file.getAbsolutePath());
                     try {
                         pb.start();
                     } catch (IOException e1) {
@@ -55,11 +67,9 @@ public class Arborescence extends AbstractAction {
             }
         };
         tree.addMouseListener(ml);
-
-        this.scrollPane = new JScrollPane(tree);
-
-        this.tree.setBounds(0, 0, this.scrollPane.getWidth(), this.scrollPane.getHeight());
         this.scrollPane.setBounds(460, 270, 240, 410);
+        this.treeFrame.setBounds(960, 170, this.scrollPane.getWidth(), this.scrollPane.getHeight());
+        this.tree.setBounds(460, 270, this.scrollPane.getWidth(), this.scrollPane.getHeight());
         this.treeFrame.add(scrollPane);
         this.treeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.treeFrame.setTitle("Arborescence du projet");

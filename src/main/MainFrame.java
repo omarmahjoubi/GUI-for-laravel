@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
     }
 
     public void build() {
-        setTitle("test");
+        setTitle("Laravel GUI");
         setSize(400, 400);
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,8 +59,6 @@ public class MainFrame extends JFrame {
 
         return panel;
     }
-
-
 
     public void changePanel() {
         setContentPane(buildSecondPane());
@@ -104,8 +102,6 @@ public class MainFrame extends JFrame {
 
         JMenu menu2 = new JMenu("Routage");
 
-
-
         JMenuItem addRoute = new JMenuItem(new OpenAddRoutePanel("ajouter une route retournant un vue", this));
         menu2.add(addRoute);
 
@@ -144,7 +140,6 @@ public class MainFrame extends JFrame {
         menuBar.add(menu4);
 
         setJMenuBar(menuBar);
-
 
         button2 = new JButton(new Guide("Guide", this));
         panel.add(button2);
