@@ -29,14 +29,20 @@ public class Open extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
 
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File("E:\\Google_Drive\\Etudes\\GL4\\PPP\\sites"));
-        fileChooser.setApproveButtonText("Selectionne le ficher");
-        fileChooser.showOpenDialog(this.frame);
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        if (from.equals("old")) {
+            fileChooser.setCurrentDirectory(new File("E:\\Google_Drive\\Etudes\\GL4\\PPP\\sites"));
+        } else {
+            fileChooser.setCurrentDirectory(new File("E:\\Google_Drive\\Etudes\\GL4\\PPP"));
+        }
+        fileChooser.setApproveButtonText("Selectionne le dossier");
+        int status = fileChooser.showOpenDialog(this.frame);
+
         fileChooser.setAcceptAllFileFilterUsed(false);
 
-        if (fileChooser.showOpenDialog(this.frame) == JFileChooser.APPROVE_OPTION) {
+        if ( status == JFileChooser.APPROVE_OPTION) {
             Process p;
+
             Open.absolutePathProject = fileChooser.getSelectedFile().getAbsolutePath();
             projectPath = String.valueOf(fileChooser.getCurrentDirectory());
             System.out.println("getSelectedDirectory(): " + fileChooser.getCurrentDirectory());
