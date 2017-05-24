@@ -32,57 +32,62 @@ public class CreateProject extends AbstractAction {
 
             projectPath = Open.absolutePathProject;
             System.out.println("projectPath = " + projectPath);
-            if(Open.absolutePathProject!=null){
-                JProgressBar jpb = new JProgressBar();
-                jpb.setMaximum(257);
-                jpb.setPreferredSize(new Dimension(300,20));
-                JLabel label = new JLabel("Loading ....");
-                JPanel panel = new JPanel() ;
-                JFrame frame1 = new JFrame() ;
-                panel.setLayout(new GridLayout(3, 1));
-                panel.setBackground(Color.white);
+            if (!this.frame.getField().getText().equals("")) {
 
 
-                // des panels vides pour representer les celluse du grid layout
-                JPanel[][] emptyPanels = new JPanel[3][1];
-                for (int m = 0; m < 3; m++) {
-                    for (int l = 0; l < 1; l++) {
+                if (Open.absolutePathProject != null) {
+                    JProgressBar jpb = new JProgressBar();
+                    jpb.setMaximum(257);
+                    jpb.setPreferredSize(new Dimension(300, 20));
+                    JLabel label = new JLabel("Loading ....");
+                    JPanel panel = new JPanel();
+                    JFrame frame1 = new JFrame();
+                    panel.setLayout(new GridLayout(3, 1));
+                    panel.setBackground(Color.white);
 
-                        emptyPanels[m][l] = new JPanel();
-                        panel.add(emptyPanels[m][l]);
-                    }
-                }
 
-                emptyPanels[0][0].add(jpb);
-                emptyPanels[1][0].add(label) ;
-                JButton cancel = new JButton("annuler") ;
-                cancel.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent event) {
-                        Process p1 ;
-                        try {
+                    // des panels vides pour representer les celluse du grid layout
+                    JPanel[][] emptyPanels = new JPanel[3][1];
+                    for (int m = 0; m < 3; m++) {
+                        for (int l = 0; l < 1; l++) {
 
-                            String command2 ="cmd.exe /c " + "taskkill /F /IM php.exe" ;
-                            p1 = Runtime.getRuntime().exec(command2);
-                            p1.waitFor();
-                            frame1.dispatchEvent(new WindowEvent(frame1, WindowEvent.WINDOW_CLOSING));
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            emptyPanels[m][l] = new JPanel();
+                            panel.add(emptyPanels[m][l]);
                         }
-                    }}) ;
-                emptyPanels[2][0].add(cancel) ;
-                frame1.add(panel);
-                frame1.setLocationRelativeTo(null);
-                frame1.setSize(400,150);
-                frame1.setVisible(true);
+                    }
 
-                CreateWorker worker = new CreateWorker(this.frame,jpb,label,frame1);
-                worker.execute();
-            }
-            else {
-                JOptionPane.showMessageDialog(frame, "Vous devez spécifier le chemin de votre projet");
-            }
+                    emptyPanels[0][0].add(jpb);
+                    emptyPanels[1][0].add(label);
+                    JButton cancel = new JButton("annuler");
+                    cancel.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent event) {
+                            Process p1;
+                            try {
 
+                                String command2 = "cmd.exe /c " + "taskkill /F /IM php.exe";
+                                p1 = Runtime.getRuntime().exec(command2);
+                                p1.waitFor();
+                                frame1.dispatchEvent(new WindowEvent(frame1, WindowEvent.WINDOW_CLOSING));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    emptyPanels[2][0].add(cancel);
+                    frame1.add(panel);
+                    frame1.setLocationRelativeTo(null);
+                    frame1.setSize(400, 150);
+                    frame1.setVisible(true);
+
+                    CreateWorker worker = new CreateWorker(this.frame, jpb, label, frame1);
+                    worker.execute();
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Vous devez spécifier le chemin de votre projet");
+                }
+            } else {
+                JOptionPane.showMessageDialog(frame, "Vous devez spécifier le nom du projet");
+            }
         } catch (Exception e1) {
             e1.printStackTrace();
         }

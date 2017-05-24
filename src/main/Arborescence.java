@@ -57,7 +57,7 @@ public class Arborescence extends AbstractAction {
                                    FileTreeModel.MyFile file1 = (FileTreeModel.MyFile) tp.getLastPathComponent();
                                    File file = file1.getFile() ;
                     System.out.println("Selected:  "+file.getAbsolutePath());
-                    ProcessBuilder pb = new ProcessBuilder("Notepad.exe", file.getAbsolutePath());
+                    ProcessBuilder pb = new ProcessBuilder("Notepad++.exe", file.getAbsolutePath());
                     try {
                         pb.start();
                     } catch (IOException e1) {
